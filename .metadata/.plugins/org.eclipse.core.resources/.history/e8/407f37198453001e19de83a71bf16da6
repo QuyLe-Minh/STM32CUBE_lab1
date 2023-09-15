@@ -93,15 +93,15 @@ int main(void)
   while (1)
   {
 	  if (counter == 5){
-		  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-		  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_6);
+		  HAL_GPIO_TogglePin(GPIOA, GPIO_Pin_5);
+		  HAL_GPIO_TogglePin(GPIOA, GPIO_Pin_6);
 	  }else if (counter == 3){
-		  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_6);
-		  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_7);
+		  HAL_GPIO_TogglePin(GPIOA, GPIO_Pin_6);
+		  HAL_GPIO_TogglePin(GPIOA, GPIO_Pin_7);
 	  }
 	  else if (counter <= 0){
 		  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_7);
-		  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+		  HAL_GPIO_TogglePin(GPIOA, GPIO_Pin_5);
 		  counter = 10;
 	  }
 	  counter -=1;
