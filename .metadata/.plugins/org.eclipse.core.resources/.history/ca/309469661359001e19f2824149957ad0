@@ -126,8 +126,8 @@ int main(void)
     /* USER CODE END WHILE */
 	if (count % 5 == 0){
 		if (ptr == 12){
-			ptr = 0;
-			flag ^= 1;
+		ptr = 0;
+		flag ^= 1;
 		}
 		writePin(ptr, flag);
 		ptr++;

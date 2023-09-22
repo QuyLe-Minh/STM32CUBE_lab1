@@ -412,10 +412,10 @@ int main(void)
  8000378:	68bb      	ldr	r3, [r7, #8]
  800037a:	2b0c      	cmp	r3, #12
  800037c:	d105      	bne.n	800038a <main+0x4a>
-		ptr = 0;
+			ptr = 0;
  800037e:	2300      	movs	r3, #0
  8000380:	60bb      	str	r3, [r7, #8]
-		flag ^= 1;
+			flag ^= 1;
  8000382:	68fb      	ldr	r3, [r7, #12]
  8000384:	f083 0301 	eor.w	r3, r3, #1
  8000388:	60fb      	str	r3, [r7, #12]
