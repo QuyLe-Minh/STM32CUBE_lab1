@@ -127,7 +127,7 @@ int main(void)
 	if (count % 5 == 0){
 		if (ptr == 12){
 		ptr = 0;
-		flag ^= 1;
+		flag = 0;
 		}
 		writePin(ptr, flag);
 		ptr++;
