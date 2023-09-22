@@ -61,10 +61,6 @@ void clearAllClock(){
 void setNumberOnClock(int num){
 	if (num >= 0 && num <= 11) writePin(num, 1);
 }
-
-void clearNumberOnClock(int num){
-	if (num >= 0 && num <= 11) writePin(num, 0);
-}
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
