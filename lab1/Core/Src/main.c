@@ -136,52 +136,62 @@ int main(void)
   led_sec[0] = 1;
   led_min[0] = 1;
   led_hr[0] = 1;
-  int ptr = 0;
+  int curr = 0, prev = 11;
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
 	if (sec%5 == 0){
-		if (sec == 60) ptr = 0;
-		else ptr = sec/5;
-		led_sec[ptr] = 1;
-		ptr = (sec-1)/5;
-		led_sec[ptr] = 0;
-		writePin(ptr, led_sec[ptr] | led_min[ptr] | led_hr[ptr]);
-		writePin(ptr+1, 1);
-		if (sec == 60){
-			sec = 1;
+		if (sec >= 60 || sec == 0){
+			curr = 0;
+			prev = 11;
+		}
+		else {
+			curr = sec/5;
+			prev = curr-1;
+		}
+		led_sec[curr] = 1;
+		led_sec[prev] = 0;
+		writePin(prev, led_sec[prev] | led_min[prev] | led_hr[prev]);
+		writePin(curr, 1);
+		if (sec >= 60){
+			sec = 0;
 			min++;
 			if (min%5 == 0){
-				if (min == 60) ptr = 0;
-				else ptr = min/5;
-				led_min[ptr] = 1;
-				ptr = (min-1)/5;
-				led_min[ptr] = 0;
-				writePin(ptr, led_sec[ptr] | led_min[ptr] | led_hr[ptr]);
-				writePin(ptr+1, 1);
+				if (min >= 60 || min == 0){
+					curr = 0;
+					prev = 11;
+				}
+				else{
+					curr = min/5;
+					prev = curr-1;
+				}
+				led_min[curr] = 1;
+				led_min[prev] = 0;
+				writePin(prev, led_sec[prev] | led_min[prev] | led_hr[prev]);
+				writePin(curr, 1);
 
-				if (min == 60){
-					min = 1;
+				if (min >= 60){
+					min = 0;
 					hr++;
-					if (hr == 12){
+					if (hr >= 12){
 						led_hr[0] = 1;
 						led_hr[11] = 0;
 						writePin(0, 1);
-						writePin(11, led_hr[11] | led_min[11] | led_sec[11]);
+						writePin(11, led_hr[11] + led_min[11] + led_sec[11]);
 						hr = 0;
 					}else{
 						led_hr[hr] = 1;
 						led_hr[hr-1] = 0;
 						writePin(hr, 1);
-						writePin(hr-1, led_hr[hr-1] | led_min[hr-1] | led_sec[hr-1]);
+						writePin(hr-1, led_hr[hr-1] + led_min[hr-1] + led_sec[hr-1]);
 					}
 				}
 			}
 		}
 	}sec++;
-	HAL_Delay(1000);
+	HAL_Delay(100);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
