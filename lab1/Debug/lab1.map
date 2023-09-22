@@ -212,7 +212,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x183 ./Core/Src/stm32f1xx_it.o
  .debug_macro   0x0000000000000000      0x140 ./Core/Src/stm32f1xx_it.o
  .debug_macro   0x0000000000000000       0x69 ./Core/Src/stm32f1xx_it.o
- .debug_macro   0x0000000000000000       0x10 ./Core/Src/stm32f1xx_it.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/stm32f1xx_it.o
  .group         0x0000000000000000        0xc ./Core/Src/syscalls.o
  .group         0x0000000000000000        0xc ./Core/Src/syscalls.o
  .group         0x0000000000000000        0xc ./Core/Src/syscalls.o
@@ -2330,7 +2330,7 @@ LOAD d:/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externa
  .debug_str     0x0000000000078869       0x5a ./Core/Src/stm32f1xx_hal_msp.o
                                       0x789c8 (size before relaxing)
  .debug_str     0x00000000000788c3       0xbd ./Core/Src/stm32f1xx_it.o
-                                      0x789e5 (size before relaxing)
+                                      0x78a1a (size before relaxing)
  .debug_str     0x0000000000078980       0x52 ./Core/Src/system_stm32f1xx.o
                                       0x78986 (size before relaxing)
  .debug_str     0x00000000000789d2       0x36 ./Core/Startup/startup_stm32f103c6ux.o
