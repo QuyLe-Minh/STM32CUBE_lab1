@@ -105,12 +105,6 @@ void display7SEG(int cnt){
 		HAL_GPIO_WritePin(g_GPIO_Port, g_Pin, GPIO_PIN_RESET);
 	}
 }
-enum states{
-	red1_green2,
-	red1_yellow2,
-	green1_red2,
-	yellow1_red2
-};
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -175,42 +169,48 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
-  int counter1 = 200, counter2 = 10000;
-  	  //main		//sub
-  enum states state, next_state;
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
 	  if (counter1 < 0 || counter2 < 0){
-		  if (state == red1_green2){
+		  if (state == red1_green3){
+			  HAL_GPIO_TogglePin(green3_GPIO_Port, green3_Pin);
+			  HAL_GPIO_TogglePin(green4_GPIO_Port, green4_Pin);
+			  HAL_GPIO_TogglePin(yellow3_GPIO_Port, yellow3_Pin);
+			  HAL_GPIO_TogglePin(yellow4_GPIO_Port, yellow4_Pin);
+			  counter1 = 1;
+			  next_state = red1_yellow3;
+		  }else if (state == red1_yellow3){
+			  HAL_GPIO_TogglePin(green3_GPIO_Port, green3_Pin);
+			  HAL_GPIO_TogglePin(green4_GPIO_Port, green4_Pin);
+			  HAL_GPIO_TogglePin(yellow3_GPIO_Port, yellow3_Pin);
+			  HAL_GPIO_TogglePin(yellow4_GPIO_Port, yellow4_Pin);
+			  counter1 = 4;
+			  counter2 = 2;
+			  next_state = green1_red3;
+		  }else if (state == green1_red3){
+			  HAL_GPIO_TogglePin(green1_GPIO_Port, green1_Pin);
 			  HAL_GPIO_TogglePin(green2_GPIO_Port, green2_Pin);
-			  HAL_GPIO_TogglePin(yellow2_GPIO_Port, yellow2_Pin);
-			  counter1 = 100;
-			  next_state = red1_yellow2;
-		  }else if (state == red1_yellow2){
-			  HAL_GPIO_TogglePin(yellow2_GPIO_Port, yellow2_Pin);
-			  HAL_GPIO_TogglePin(red2_GPIO_Port, red2_Pin);
-
-			  HAL_GPIO_TogglePin(green1_GPIO_Port, green1_Pin);
-			  counter1 = 400;
-			  counter2 = 200;
-			  next_state = green1_red2;
-		  }else if (state == green1_red2){
-			  HAL_GPIO_TogglePin(green1_GPIO_Port, green1_Pin);
 			  HAL_GPIO_TogglePin(yellow1_GPIO_Port, yellow1_Pin);
-			  next_state = yellow1_red2;
-			  counter2 = 100;
+			  HAL_GPIO_TogglePin(yellow2_GPIO_Port, yellow2_Pin);
+			  next_state = yellow1_red3;
+			  counter2 = 1;
 		  }else{
 			  HAL_GPIO_TogglePin(yellow1_GPIO_Port, yellow1_Pin);
-			  HAL_GPIO_TogglePin(red1_GPIO_Port, red1_Pin);
+			  HAL_GPIO_TogglePin(yellow2_GPIO_Port, yellow2_Pin);
+			  HAL_GPIO_TogglePin(red1_GPIO_Port, red2_Pin);
+			  HAL_GPIO_TogglePin(red1_GPIO_Port, red2_Pin);
 
-			  HAL_GPIO_TogglePin(red2_GPIO_Port, red2_Pin);
-			  HAL_GPIO_TogglePin(green2_GPIO_Port, green2_Pin);
+			  HAL_GPIO_TogglePin(red3_GPIO_Port, red3_Pin);
+			  HAL_GPIO_TogglePin(red4_GPIO_Port, red4_Pin);
+			  HAL_GPIO_TogglePin(green3_GPIO_Port, green4_Pin);
+			  HAL_GPIO_TogglePin(green4_GPIO_Port, green4_Pin);
 
-			  counter2 = 10000;
-			  counter1 = 200;
-			  next_state = red1_green2;
+			  counter2 = 100;
+			  counter1 = 2;
+			  next_state = red1_green3;
 			  }
 		  state = next_state;
 		  }
@@ -273,11 +273,11 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, a_Pin|b_Pin|c_Pin|d_Pin
-                          |e_Pin|red1_Pin|green2_Pin, GPIO_PIN_RESET);
+                          |e_Pin|red1_Pin|yellow1_Pin|green1_Pin
+                          |red2_Pin|yellow2_Pin|green2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, f_Pin|g_Pin|yellow1_Pin|green1_Pin
-                          |red2_Pin|yellow2_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, f_Pin|g_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : a_Pin b_Pin c_Pin d_Pin
                            e_Pin f_Pin g_Pin red1_Pin
