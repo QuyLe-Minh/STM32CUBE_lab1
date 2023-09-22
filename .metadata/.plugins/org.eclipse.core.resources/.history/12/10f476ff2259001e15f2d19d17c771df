@@ -90,34 +90,46 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int counter = 1000;
+
   //red 1 green3 first
   while (1)
   {
-	  if (counter == 700){
-		  HAL_GPIO_TogglePin(green2_GPIO_Port, green2_Pin);
-		  HAL_GPIO_TogglePin(yellow2_GPIO_Port, yellow2_Pin);
-	  }else if (counter == 500){
-		  HAL_GPIO_TogglePin(yellow2_GPIO_Port, yellow2_Pin);
-		  HAL_GPIO_TogglePin(red2_GPIO_Port, red2_Pin);
+	  if (counter == 7){
+		  HAL_GPIO_TogglePin(green3_GPIO_Port, green3_Pin);
+		  HAL_GPIO_TogglePin(green4_GPIO_Port, green4_Pin);
+		  HAL_GPIO_TogglePin(yellow3_GPIO_Port, yellow3_Pin);
+		  HAL_GPIO_TogglePin(yellow4_GPIO_Port, yellow4_Pin);
+	  }else if (counter == 5){
+		  HAL_GPIO_TogglePin(yellow3_GPIO_Port, yellow3_Pin);
+		  HAL_GPIO_TogglePin(yellow4_GPIO_Port, yellow4_Pin);
+		  HAL_GPIO_TogglePin(red3_GPIO_Port, red3_Pin);
+		  HAL_GPIO_TogglePin(red4_GPIO_Port, red4_Pin);
 
 		  HAL_GPIO_TogglePin(red1_GPIO_Port, red1_Pin);
+		  HAL_GPIO_TogglePin(red2_GPIO_Port, red2_Pin);
 		  HAL_GPIO_TogglePin(green1_GPIO_Port, green1_Pin);
+		  HAL_GPIO_TogglePin(green2_GPIO_Port, green2_Pin);
 	  }
-	  else if (counter == 200){
+	  else if (counter == 2){
 		  HAL_GPIO_TogglePin(green1_GPIO_Port, green1_Pin);
+		  HAL_GPIO_TogglePin(green2_GPIO_Port, green2_Pin);
 		  HAL_GPIO_TogglePin(yellow1_GPIO_Port, yellow1_Pin);
+		  HAL_GPIO_TogglePin(yellow2_GPIO_Port, yellow2_Pin);
 	  }else if (counter <= 0){
 		  HAL_GPIO_TogglePin(yellow1_GPIO_Port, yellow1_Pin);
-		  HAL_GPIO_TogglePin(red1_GPIO_Port, red1_Pin);
+		  HAL_GPIO_TogglePin(yellow2_GPIO_Port, yellow2_Pin);
+		  HAL_GPIO_TogglePin(red1_GPIO_Port, red2_Pin);
+		  HAL_GPIO_TogglePin(red1_GPIO_Port, red2_Pin);
 
-		  HAL_GPIO_TogglePin(red2_GPIO_Port, red2_Pin);
-		  HAL_GPIO_TogglePin(green2_GPIO_Port, green2_Pin);
+		  HAL_GPIO_TogglePin(red3_GPIO_Port, red3_Pin);
+		  HAL_GPIO_TogglePin(red4_GPIO_Port, red4_Pin);
+		  HAL_GPIO_TogglePin(green3_GPIO_Port, green4_Pin);
+		  HAL_GPIO_TogglePin(green4_GPIO_Port, green4_Pin);
 
-		  counter = 1000;
+		  counter = 10;
 	  }
 	  counter -=1;
-	  HAL_Delay(10);
+	  HAL_Delay(1000);
 
     /* USER CODE END WHILE */
 
@@ -174,10 +186,11 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, red1_Pin|green2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, red1_Pin|yellow1_Pin|green1_Pin|red2_Pin
+                          |yellow2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, yellow1_Pin|green1_Pin|red2_Pin|yellow2_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(green2_GPIO_Port, green2_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : red1_Pin yellow1_Pin green1_Pin red2_Pin
                            yellow2_Pin green2_Pin */
