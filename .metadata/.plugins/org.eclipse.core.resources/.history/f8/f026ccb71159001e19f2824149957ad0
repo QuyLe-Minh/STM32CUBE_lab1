@@ -52,11 +52,6 @@ void writePin(int ptr, int state){
 		else if (ptr == 11) HAL_GPIO_WritePin(led11_GPIO_Port, led11_Pin, GPIO_PIN_RESET);
 	}
 }
-void clearAllClock(){
-	for (int i = 0; i < 11; i++){
-		writePin(i, 0);
-	}
-}
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
