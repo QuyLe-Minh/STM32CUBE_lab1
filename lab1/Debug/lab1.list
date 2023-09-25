@@ -690,12 +690,11 @@ int main(void)
  800060c:	f8d7 30a4 	ldr.w	r3, [r7, #164]	; 0xa4
  8000610:	3301      	adds	r3, #1
  8000612:	f8c7 30a4 	str.w	r3, [r7, #164]	; 0xa4
-	HAL_Delay(100);
- 8000616:	2064      	movs	r0, #100	; 0x64
- 8000618:	f000 f968 	bl	80008ec <HAL_Delay>
+	HAL_Delay(1000);
+ 8000616:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 800061a:	f000 f967 	bl	80008ec <HAL_Delay>
 	if (sec%5 == 0){
- 800061c:	e6c2      	b.n	80003a4 <main+0x64>
- 800061e:	bf00      	nop
+ 800061e:	e6c1      	b.n	80003a4 <main+0x64>
  8000620:	66666667 	.word	0x66666667
 
 08000624 <SystemClock_Config>:
