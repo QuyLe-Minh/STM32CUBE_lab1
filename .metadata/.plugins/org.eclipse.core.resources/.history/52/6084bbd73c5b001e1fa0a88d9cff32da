@@ -186,11 +186,8 @@ int main(void)
 		  if (state == red1_green2){
 			  HAL_GPIO_TogglePin(green2_GPIO_Port, green2_Pin);
 			  HAL_GPIO_TogglePin(yellow2_GPIO_Port, yellow2_Pin);
-			  counter1--;// = 100;
-			  if(counter1 <=0){
-				  next_state = red1_yellow2;
-				  counter1 = 200;
-			  }
+			  counter1 = 100;
+			  next_state = red1_yellow2;
 		  }else if (state == red1_yellow2){
 			  HAL_GPIO_TogglePin(yellow2_GPIO_Port, yellow2_Pin);
 			  HAL_GPIO_TogglePin(red2_GPIO_Port, red2_Pin);
